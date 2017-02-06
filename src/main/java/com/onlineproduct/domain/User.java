@@ -11,13 +11,11 @@ public class User {
 	private String address;
 	private Date dateOfBirth;
 	
-	public String getUsername() {
-		return username;
-	}
 	
-	public User(){
-		
-	}
+
+	
+	public User() {};
+	
 	public User(String username, String password, 
 			String name, String email, int contact, 
 			String address,
@@ -30,6 +28,10 @@ public class User {
 		this.contact = contact;
 		this.address = address;
 		this.dateOfBirth = dateOfBirth;
+	}
+	
+	public String getUsername() {
+		return username;
 	}
 	
 	public void setUsername(String username) {
