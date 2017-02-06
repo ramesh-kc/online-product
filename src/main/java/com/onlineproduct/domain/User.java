@@ -14,6 +14,10 @@ public class User {
 	public String getUsername() {
 		return username;
 	}
+	
+	public User(){
+		
+	}
 	public User(String username, String password, 
 			String name, String email, int contact, 
 			String address,

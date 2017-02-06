@@ -11,9 +11,19 @@
 		<put-attribute name="i_body3" value="" />
 		<put-attribute name="footer" value="/views/footer.jsp" />
 	</definition>
+	
+	
 	<definition name="index" extends="base.definition">
 		<put-attribute name="i_body1" value="/views/index_body1.jsp" />
+	</definition>
+	
+	<definition name="homepage" extends="base.definition">
 		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
 		<put-attribute name="i_body3" value="/views/index_body3.jsp" />
 	</definition>
+	
+	<definition name="userRegistration" extends="base.definition">
+		<put-attribute name="i_body1" value="/views/user_registration_body.jsp" />
+	</definition>
+	
 </tiles-definitions>

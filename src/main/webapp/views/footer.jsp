@@ -85,11 +85,11 @@
 				<strong>Our Location</strong>
 				<hr>
 				<p>
-					234, New york Street,<br /> Just Location, USA<br /> Call:
-					+09-456-567-890<br> Email: info@yourdomain.com<br>
+					1000 N 4th Street<br /> Fairfield, Iowa, USA<br /> Call:
+					+641-451-3156<br> Email: shrestha@gmail.com<br>
 				</p>
 
-				2014 www.yourdomain.com | All Right Reserved
+				www.onlineproductsystem.com | All Right Reserved, 2016 
 			</div>
 			<div class="col-md-4 social-box">
 				<strong>We are Social </strong>
@@ -107,8 +107,8 @@
 		<hr>
 	</div>
 	<!-- /.col -->
-	<div class="col-md-12 end-box ">&copy; 2014 | &nbsp; All Rights
-		Reserved | &nbsp; www.yourdomain.com | &nbsp; 24x7 support | &nbsp;
-		Email us: info@yourdomain.com</div>
+	<div class="col-md-12 end-box ">&copy; 2016 | &nbsp; All Rights
+		Reserved | &nbsp; www.onlineproductsystem.com | &nbsp; 24x7 support | &nbsp;
+		Email us: info@shrestha.com</div>
 	<!-- /.col -->
 	<!--Footer end -->
