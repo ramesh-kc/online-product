@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
@@ -10,7 +11,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><strong>ONLINE</strong> Product System</a>
+			<a class="navbar-brand" href="#"><strong>ONLINE</strong>Product System</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,17 +20,17 @@
 
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Track Order</a></li>
-				<li><a data-toggle="modal" data-target="#login-modal">Login</a></li>
-				<li><a href="userRegistration">Signup</a></li>
+				
+				<li><a data-toggle="modal" data-target="#login-modal"><spring:message code = "label.login"/></a></li>
+				<li><a href="userRegistration"><spring:message code="label.signup"/></a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">24x7 Support <b class="caret"></b></a>
+					data-toggle="dropdown"><spring:message code ="label.support"/><b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><strong>Call: </strong>641-451-3156</a></li>
-						<li><a href="#"><strong>Mail: </strong>shrestha@gmail.com</a></li>
+						<li><a href="#"><strong><spring:message code ="label.call"/>: </strong>641-451-3156</a></li>
+						<li><a href="#"><strong><spring:message code ="label.emailPlaceholder"/>: </strong>shrestha@gmail.com</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><strong>Address: </strong>
+						<li><a href="#"><strong><spring:message code ="label.address"/>: </strong>
 								<div>
 									1000 N 4th Street,<br /> Fairfield, Iowa, USA
 								</div> </a></li>
@@ -41,7 +42,7 @@
 						class="form-control">
 				</div>
 				&nbsp;
-				<button type="submit" class="btn btn-primary">Search</button>
+				<button type="submit" class="btn btn-primary"><spring:message code ="label.search"/></button>
 			</form>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -56,20 +57,19 @@
 			style="display: none;">
 			<div class="modal-dialog">
 				<div class="loginmodal-container">
-					<h1>Login to Your Account</h1>
+					<h1><spring:message code ="label.loginModelHeader"/></h1>
 					<br>
 					<form:form modelAttribute="user" action="login" method="POST">
-						<form:input type="text" path="username" placeholder="Email"
+						<form:input type="text" path="username" placeholder="Username" 
 							required="required" /> <form:input type="password" path="password"
 							placeholder="Password" required="required" /> 
 							<label><input type="checkbox" name="remember" value="1"
 							${checked}> Remember Me</label><br/>
-							<button type="submit" class="login loginmodal-submit inputField">Login</button>
+							<button type="submit" class="login loginmodal-submit inputField"><spring:message code ="label.login"/></button>
 					</form:form>
 					<br/>
 					<div class="login-help">
-						<a href="userRegistration">Register</a> - <a href="#">Forgot
-							Password</a>
+						<a href="userRegistration"><spring:message code="label.register"/></a> - <a href="#"><spring:message code="label.forgotPassword"/></a>
 					</div>
 				</div>
 			</div>

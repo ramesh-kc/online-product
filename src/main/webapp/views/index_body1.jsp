@@ -1,9 +1,14 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<div>
+<a href="?locale=en_US">ENGLISH</a> | <a href="?locale=np_NP">NEPALI</a>
+</div>
+
 <div class="row">
 			<div class="col-md-9">
 				<div class="well well-lg offer-box text-center">
 
 
-					Today's Offer : &nbsp; <span class="glyphicon glyphicon-cog"></span>&nbsp;40
+					<spring:message code="label.todaysOffer"/> : &nbsp; <span class="glyphicon glyphicon-cog"></span>&nbsp;40
 					% off on purchase of $ 2,000 and above till 24 dec !
 
 
