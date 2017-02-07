@@ -1,3 +1,4 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!--Footer -->
 	<div class="col-md-12 footer-box">
 
@@ -49,20 +50,20 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<strong>Send a Quick Query </strong>
+				<strong><spring:message code="label.sendQuickQuery"></spring:message></strong>
 				<hr>
 				<form>
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<input type="text" class="form-control" required="required"
-									placeholder="Name">
+									placeholder="<spring:message code="label.namePlaceholder"/>">
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<input type="text" class="form-control" required="required"
-									placeholder="Email address">
+									placeholder="<spring:message code="label.emailPlaceholder"/>">
 							</div>
 						</div>
 					</div>
@@ -70,11 +71,11 @@
 						<div class="col-md-12 col-sm-12">
 							<div class="form-group">
 								<textarea name="message" id="message" required="required"
-									class="form-control" rows="3" placeholder="Message"></textarea>
+									class="form-control" rows="3" 
+									placeholder="<spring:message code="label.messagePlaceholder"/>"></textarea>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Submit
-									Request</button>
+								<button type="submit" class="btn btn-primary"><spring:message code="label.submitRequest"/></button>
 							</div>
 						</div>
 					</div>
@@ -82,33 +83,30 @@
 			</div>
 
 			<div class="col-md-4">
-				<strong>Our Location</strong>
+				<strong><spring:message code="label.ourLocation"/></strong>
 				<hr>
 				<p>
-					1000 N 4th Street<br /> Fairfield, Iowa, USA<br /> Call:
-					+641-451-3156<br> Email: shrestha@gmail.com<br>
+					1000, North Forth Street,<br /> Fairfield, USA<br /> <spring:message code ="label.call"/>:
+					+09-456-567-890<br> <spring:message code ="label.emailPlaceholder"/>: info@yourdomain.com<br>
 				</p>
 
-				www.onlineproductsystem.com | All Right Reserved, 2016 
+				www.yourdomain.com | &copy; <spring:message code ="label.year"/> | <spring:message code ="label.allRightReserved"/>
 			</div>
 			<div class="col-md-4 social-box">
-				<strong>We are Social </strong>
+				<strong><spring:message code ="label.socialLinks"/> </strong>
 				<hr>
 				<a href="#"><i class="fa fa-facebook-square fa-3x "></i></a> <a
 					href="#"><i class="fa fa-twitter-square fa-3x "></i></a> <a
 					href="#"><i class="fa fa-google-plus-square fa-3x c"></i></a> <a
 					href="#"><i class="fa fa-linkedin-square fa-3x "></i></a> <a
 					href="#"><i class="fa fa-pinterest-square fa-3x "></i></a>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-					Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.</p>
+				<p><spring:message code ="description.socialLinks"/></p>
 			</div>
 		</div>
 		<hr>
 	</div>
 	<!-- /.col -->
-	<div class="col-md-12 end-box ">&copy; 2016 | &nbsp; All Rights
-		Reserved | &nbsp; www.onlineproductsystem.com | &nbsp; 24x7 support | &nbsp;
-		Email us: info@shrestha.com</div>
+	<div class="col-md-12 end-box ">&copy; <spring:message code ="label.year"/> | &nbsp; <spring:message code ="label.allRightReserved"/> | &nbsp; www.yourdomain.com | &nbsp; <spring:message code ="label.support"/> | &nbsp;
+		<spring:message code ="label.emailPlaceholder"/>: info@yourdomain.com</div>
 	<!-- /.col -->
 	<!--Footer end -->
