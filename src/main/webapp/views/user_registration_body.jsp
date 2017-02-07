@@ -1,7 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
 <section class="container">
 	<h3>User Registration Form</h3>
@@ -18,13 +20,16 @@
 
 					</div>
 					<div class="form-group">
-						<label>Gender</label><br> <input type="radio"
-							name="radioGender" value="Male"> Male <input type="radio"
-							name="radioGender" value="Female"> Female
+						<label>Gender</label><br>
+						<form:radiobutton path="sex" value="Male" />
+						Male
+						<form:radiobutton path="sex" value="Female" />
+						Female
 					</div>
 					<div class="form-group">
 						<!-- <label>DOB</label> -->
-						<label class="control-label" for="dateOfBirth">Date of Birth</label>
+						<label class="control-label" for="dateOfBirth">Date of
+							Birth</label>
 						<form:input path="dateOfBirth" type="text" required="required"
 							id="dateOfBirth" placeholder="Ex: MM/DD/YYYY"
 							class="inputField form-control" />
@@ -70,7 +75,7 @@
 	<script>
 		$(document).ready(
 				function() {
-					var date_input = $('input[name="dateOfBirth"]'); 
+					var date_input = $('input[name="dateOfBirth"]');
 					var container = $('.bootstrap-iso form').length > 0 ? $(
 							'.bootstrap-iso form').parent() : "body";
 					var options = {

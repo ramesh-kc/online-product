@@ -2,29 +2,35 @@ package com.onlineproduct.repository;
 
 import java.util.List;
 
-import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-
-
+import org.springframework.stereotype.Repository;
 
 import com.onlineproduct.domain.User;
-
+@Repository
 public class UserRepositoryImpl implements UserRepository {
 
 	private JdbcTemplate jdbcTemplate;
-	
-	public UserRepositoryImpl(DataSource dataSource) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
+
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	@Override
 	public void saveOrUpdate(User user) {
-		String sql = "INSERT INTO users (username, password, name, email, contact, address, dateOfBirth)" 
-						+ "Values(?, ?, ?, ?, ?, ?, ?)";
+		int sex = 0;
+		if (user.getSex().equals("Male")) {
+			sex = 1;
+		}
+		String sql = "INSERT INTO users (username, password, name, sex, email, contact, address, dateOfBirth)" 
+						+ "Values(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		jdbcTemplate.update(sql, user.getUsername(),user.getPassword(), user.getName(), 
-				user.getEmail(), user.getContact(), user.getAddress(), user.getDateOfBirth());
+				sex, user.getEmail(), user.getContact(), user.getAddress(), user.getDateOfBirth());
 		
 	}
 
