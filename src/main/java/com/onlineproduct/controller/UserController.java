@@ -31,40 +31,40 @@ public class UserController {
 	public String getIndex(@ModelAttribute("user") User user) {
 		return "index";
 	}
-	
+
 	/**
 	 * login authentication
+	 * 
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST) 
-		public String loginProcessForm(@ModelAttribute("user") User user,
-				boolean remember, @CookieValue(value = "username", defaultValue = "")
-				String username, Model model, HttpSession session, HttpServletResponse response) {
-		
-		
-		 boolean isValid = userService.authenticateUser(user);
-		 if (isValid) {
-			 User userInfo = userService.findLoggedInUserInfo(user.getUsername(), user.getPassword());
-			 
-			 if (remember && username.isEmpty()) {
-				 Cookie cookie = new Cookie("username", user.getUsername());
-				 cookie.setMaxAge(60);
-				 response.addCookie(cookie);
-			 
-			 } else if (!remember) {
-				 Cookie cookie = new Cookie("username", null);
-				 cookie.setMaxAge(0);
-				 response.addCookie(cookie);
-			 }
-			 session.setAttribute("userInfo", userInfo);
-			 return "redirect:/welcome";
-		 
-		 }
-		 else {
-			 return "index";
-		 }
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginProcessForm(@ModelAttribute("user") User user, boolean remember,
+			@CookieValue(value = "username", defaultValue = "") String username, Model model, HttpSession session,
+			HttpServletResponse response) {
+
+		boolean isValid = userService.authenticateUser(user);
+		if (isValid) {
+			User userInfo = userService.findLoggedInUserInfo(user.getUsername(), user.getPassword());
+
+			if (remember && username.isEmpty()) {
+				Cookie cookie = new Cookie("username", user.getUsername());
+				cookie.setMaxAge(60);
+				response.addCookie(cookie);
+
+			} else if (!remember) {
+				Cookie cookie = new Cookie("username", null);
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
+			}
+			session.setAttribute("userInfo", userInfo);
+			session.setAttribute("userName", userInfo.getUsername());
+			return "redirect:/welcome";
+
+		} else {
+			return "index";
 		}
+	}
 
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.GET)
 	public String getUserRegistration(@ModelAttribute("user") User user) {
@@ -79,11 +79,17 @@ public class UserController {
 
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String getWelcomePage(Model model) {
-		return "homepage";
+		return "normalUserHomepage";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpSession session) {
+		session.invalidate();
+		return "redirect:/index";
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String loginRequired(HttpSession session) {
 		session.invalidate();
 		return "redirect:/index";
 	}
