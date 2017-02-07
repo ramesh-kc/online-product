@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findLoggedInUserId(user);
 	}
 
+	@Override
+	public boolean isAdmin(User user) {
+		return userRepository.isAdmin(user);
+	}
+
 }

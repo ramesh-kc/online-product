@@ -23,6 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public void saveOrUpdate(User user) {
 		
+		System.out.println("Status: " + user.getStatus());
 		String passwordmd = "";
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -39,11 +40,11 @@ public class UserRepositoryImpl implements UserRepository {
 			if (user.getSex().equals("Male")) {
 				sex = 1;
 			}
-			String sql = "INSERT INTO users (username, password, name, sex, email, contact, address, dateOfBirth)" 
-							+ "Values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO users (username, password, name, sex, status, email, contact, address, dateOfBirth)" 
+							+ "Values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			jdbcTemplate.update(sql, user.getUsername(), passwordmd, user.getName(), 
-					sex, user.getEmail(), user.getContact(), user.getAddress(), user.getDateOfBirth());
+					sex, user.getStatus(), user.getEmail(), user.getContact(), user.getAddress(), user.getDateOfBirth());
 		
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -132,6 +133,39 @@ public class UserRepositoryImpl implements UserRepository {
 		}
 		return userId;
 		
+	}
+
+	@Override
+	public boolean isAdmin(User user) {
+	 boolean userAdminExists = false;
+		
+		String passwordmd = "";
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(user.getPassword().getBytes());
+			byte[] digest = md.digest();
+			
+			StringBuffer sb = new StringBuffer();
+			for (byte b : digest) {
+				sb.append(String.format("%02x", b & 0xff));
+			}
+			passwordmd = sb.toString();
+			
+			String sql = "SELECT count(*) FROM users where username = ? and password = ? and status = ?";
+							
+			int rowCount = jdbcTemplate.queryForObject(sql, 
+					new Object[]{user.getUsername(), passwordmd, "Admin"},  Integer.class);
+			
+			if(rowCount == 1) {
+				userAdminExists = true;
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
+		return userAdminExists;
 	}
 
 	

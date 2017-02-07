@@ -44,6 +44,8 @@ public class UserController {
 		
 		
 		 boolean isValid = userService.authenticateUser(user);
+		 boolean isAdmin = userService.isAdmin(user);
+		 
 		 if (isValid) {
 			 User userInfo = userService.findLoggedInUserInfo(user.getUsername(), user.getPassword());
 			 
@@ -58,7 +60,14 @@ public class UserController {
 				 response.addCookie(cookie);
 			 }
 			 session.setAttribute("userInfo", userInfo);
-			 return "redirect:/welcome";
+			 
+			 if (isAdmin) {
+				 return "redirect:/adminWelcome";
+			 
+			 } else {
+				 return "redirect:/welcome";
+			 }
+			 
 		 
 		 }
 		 else {
@@ -77,11 +86,17 @@ public class UserController {
 		return "redirect:/welcome";
 	}
 
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String getWelcomePage(Model model) {
-		return "homepage";
+	@RequestMapping(value = "/adminWelcome", method = RequestMethod.GET)
+	public String getAdminWelcomePage(Model model) {
+		return "adminHomepage";
 	}
 
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String getWelcomePage(Model model) {
+		return "normalUserHomepage";
+	}
+
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpSession session) {
 		session.invalidate();
