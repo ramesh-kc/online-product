@@ -16,23 +16,33 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getlogin() {
+	public String getIndexPage() {
+		return "redirect:/index";
+	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String getIndex() {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
-	public String getUserLoginForm(@ModelAttribute("addNewUser") User user) {
-		return "addUserForm";
+	@RequestMapping(value = "/userRegistration", method = RequestMethod.GET)
+	public String getUserRegistration(@ModelAttribute("addNewUser") User user) {
+		return "userRegistration";
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST) 
 	public String processUserLoginForm(@ModelAttribute("addNewUser") User user) {
-		userRepository.saveOrUpdate(user);
+		//userRepository.saveOrUpdate(user);
 		return "redirect:/welcome";
 	}
 	
 	@RequestMapping(value = "/welcome",  method = RequestMethod.GET) 
 	public String getWelcomePage() {
-		return "welcome";
+		return "homepage";
+	}
+	
+	@RequestMapping(value = "/logout",  method = RequestMethod.GET) 
+	public String logoutUser() {
+		return "redirect:/index";
 	}
 }

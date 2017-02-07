@@ -52,11 +52,11 @@
 
 
 
-	<tiles:insertAttribute name="header" />
+	<tiles:insertAttribute name="header2" />
 
 	<div class="container">
 
-		<tiles:insertAttribute name="i_body1" />
+		<tiles:insertAttribute name="i_body2" />
 
 	</div>
 	<!-- /.container -->

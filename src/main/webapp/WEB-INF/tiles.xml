@@ -7,8 +7,12 @@
 	<definition name="base.definition" template="/template/master_template.jsp">
 		<put-attribute name="header" value="/views/header.jsp" />
 		<put-attribute name="i_body1" value="" />
+		<put-attribute name="footer" value="/views/footer.jsp" />
+	</definition>
+	
+	<definition name="base.definition2" template="/template/master_template2.jsp">
+		<put-attribute name="header2" value="/views/header2.jsp" />
 		<put-attribute name="i_body2" value="" />
-		<put-attribute name="i_body3" value="" />
 		<put-attribute name="footer" value="/views/footer.jsp" />
 	</definition>
 	
@@ -17,13 +21,14 @@
 		<put-attribute name="i_body1" value="/views/index_body1.jsp" />
 	</definition>
 	
-	<definition name="homepage" extends="base.definition">
-		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
-		<put-attribute name="i_body3" value="/views/index_body3.jsp" />
-	</definition>
-	
 	<definition name="userRegistration" extends="base.definition">
 		<put-attribute name="i_body1" value="/views/user_registration_body.jsp" />
 	</definition>
+	
+	<definition name="homepage" extends="base.definition2">
+		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
+	</definition>
+	
+	
 	
 </tiles-definitions>
