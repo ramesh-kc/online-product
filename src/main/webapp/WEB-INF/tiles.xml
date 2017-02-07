@@ -29,6 +29,10 @@
 		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
 	</definition>
 	
+	<definition name="addProduct" extends="base.definition2">
+		<put-attribute name="i_body2" value="/views/add_product_body.jsp" />
+	</definition>
+	
 	
 	
 </tiles-definitions>

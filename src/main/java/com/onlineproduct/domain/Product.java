@@ -14,6 +14,10 @@ public class Product {
 	private String category;
 	private String description;
 	
+	public Product(){
+		
+	}
+	
 	
 	public Product(String name, String userId, Blob image, double price, Date dateManufacture,
 			Date dateAdded, String category, String description) {
