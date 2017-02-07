@@ -68,6 +68,7 @@
 		    <version>4.3.2.RELEASE</version>
 		</dependency>
 		
+
 		
 		<!-- START - Security Dependencies -->
 		<!-- <dependency>
@@ -94,6 +95,20 @@
 		<!-- END - Security Dependencies -->
 		
 		
+		<!-- Apache Commons FileUpload --> 
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		
+		<!-- Apache Commons IO --> 
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
         
     </dependencies>
     

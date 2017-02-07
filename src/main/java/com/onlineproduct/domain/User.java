@@ -11,13 +11,14 @@ public class User {
 	private String address;
 	private Date dateOfBirth;
 	private String sex;
+	private String status;
 	
 	public User() {};
 	
 	public User(String username, String password, 
 			String name, String sex, String email, int contact, 
 			String address,
-			Date dateOfBirth) {
+			Date dateOfBirth, String status) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -27,6 +28,7 @@ public class User {
 		this.contact = contact;
 		this.address = address;
 		this.dateOfBirth = dateOfBirth;
+		this.status = status;
 	}
 	
 	public String getUsername() {
@@ -80,5 +82,12 @@ public class User {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
