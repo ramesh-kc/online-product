@@ -2,24 +2,21 @@ package com.onlineproduct.domain;
 
 import java.util.Date;
 
-import com.mysql.cj.jdbc.Blob;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Product {
 	private String name;
-	private String userId;
-	private Blob image;
+	private int userId;
+	private MultipartFile image;
 	private double price;
 	private Date dateManufacture;
 	private Date dateAdded;
 	private String category;
 	private String description;
 	
-	public Product(){
-		
-	}
+	public Product(){}
 	
-	
-	public Product(String name, String userId, Blob image, double price, Date dateManufacture,
+	public Product(String name, int userId, MultipartFile image, double price, Date dateManufacture,
 			Date dateAdded, String category, String description) {
 		super();
 		this.name = name;
@@ -37,16 +34,16 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public Blob getImage() {
+	public MultipartFile getImage() {
 		return image;
 	}
-	public void setImage(Blob image) {
+	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
 	public double getPrice() {
@@ -79,7 +76,5 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 	
 }

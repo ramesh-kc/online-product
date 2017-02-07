@@ -21,12 +21,11 @@ public class ProductRepositoryImpl implements ProductRepository {
 	
 	@Override
 	public void addProduct(Product product) {
-		String userId = "";
 		String sql = "INSERT into products(name, userId, image, price, dateManufacture, "
 				+ "category, description)"
 					+ "Values(?, ?, ?, ?, ?, ?, ?)";
 		
-		jdbcTemplate.update(sql, product.getName(), userId, product.getImage(), product.getPrice(),
+		jdbcTemplate.update(sql, product.getName(), product.getUserId(), product.getImage(), product.getPrice(),
 				product.getDateManufacture(), product.getCategory(), product.getDescription());
 	}
 

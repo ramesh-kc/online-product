@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findLoggedInUserInfo(username, password);
 	}
 
+	@Override
+	public int findLoggedInUserId(User user) {
+		return userRepository.findLoggedInUserId(user);
+	}
+
 }

@@ -10,5 +10,7 @@ public interface UserRepository {
 	public boolean authenticateUser(User user);
 	
 	public User findLoggedInUserInfo(String username, String password);
+	
+	public int findLoggedInUserId(User user);
 
 }

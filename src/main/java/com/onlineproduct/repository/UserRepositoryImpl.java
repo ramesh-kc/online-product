@@ -114,4 +114,25 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	
+	/**
+	 * find user id for each specific user
+	 */
+	@Override
+	public int findLoggedInUserId(User user) {
+		int userId = 0;
+		
+		try {		
+			String sql = "SELECT id FROM users where username = '"+user.getUsername()+"'";
+			
+			userId =  jdbcTemplate.queryForObject(
+					sql, Integer.class);
+		
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return userId;
+		
+	}
+
+	
 }

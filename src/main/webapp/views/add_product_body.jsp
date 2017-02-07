@@ -9,8 +9,11 @@
 	<h3>Add Product Form</h3>
 	<div class="col-lg-12 well">
 		<div class="row">
-			<form:form modelAttribute="product" method="post" id="formreg"
-				data-toggle="validator" role="form">
+			<form:form modelAttribute="product"
+					   method="post" id="formreg"
+					   enctype="multipart/form-data"
+					   data-toggle="validator" 
+					   role="form">
 
 				<div class="col-sm-12">
 					<div class="form-group">
