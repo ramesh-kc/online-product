@@ -1,8 +1,5 @@
 package com.onlineproduct.repository;
 
-import java.util.List;
-
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -35,9 +32,21 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public List<User> userList() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean authenticateUser(User user) {
+		boolean userExists = false;
+		
+		String sql = "SELECT count(*) FROM users where username = ? and password = ?";
+						
+		int rowCount = jdbcTemplate.queryForObject(sql, 
+				new Object[]{user.getUsername(), user.getPassword()},  Integer.class);
+		
+		
+		if(rowCount == 1) {
+			userExists = true;
+		}
+		
+		return userExists;
 	}
 
+	
 }

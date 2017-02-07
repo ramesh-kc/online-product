@@ -1,7 +1,12 @@
 package com.onlineproduct.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +30,38 @@ public class UserController {
 	public String getIndex(@ModelAttribute("user") User user) {
 		return "index";
 	}
+	
+	/**
+	 * login authentication
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.POST) 
+		public String loginProcessForm(@ModelAttribute("user") User user,
+				boolean remember, @CookieValue(value = "username", defaultValue = "")
+				String username, HttpSession session, HttpServletResponse response) {
+		
+		
+		 boolean isValid = userService.authenticateUser(user);
+		 if (isValid) {
+			 
+			 if (remember && username.isEmpty()) {
+				 Cookie cookie = new Cookie("username", user.getUsername());
+				 cookie.setMaxAge(60);
+				 response.addCookie(cookie);
+			 
+			 } else if (!remember) {
+				 Cookie cookie = new Cookie("username", null);
+				 cookie.setMaxAge(0);
+				 response.addCookie(cookie);
+			 }
+			 return "redirect:/welcome";
+		 
+		 }
+		 else {
+			 return "index";
+		 }
+		}
 
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.GET)
 	public String getUserRegistration(@ModelAttribute("user") User user) {
@@ -43,7 +80,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logoutUser() {
+	public String logoutUser(HttpSession session) {
+		session.invalidate();
 		return "redirect:/index";
 	}
 

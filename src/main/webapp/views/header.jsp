@@ -1,4 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
@@ -59,11 +61,19 @@
 					<h1>Login to Your Account</h1>
 					<br>
 					<form:form modelAttribute="user" action="login" method="POST">
-						<form:input type="text" path="username" placeholder="Email"
-							required="required" /> <form:input type="password" path="password"
-							placeholder="Password" required="required" /> 
-							<label><input type="checkbox" name="remember" value="1"
-							${checked}> Remember Me</label><br/>
+						<form:input type="text" 
+									path="username" 
+									placeholder="Username"
+									value = "${cookie.username.value}"
+									required="required" />
+					    <form:input type="password"
+							 		path="password"
+									placeholder="Password" 
+									required="required" /> 
+							<label><input type="checkbox" 
+									name="remember" 
+									<c:if test="${cookie.containsKey('username') }">checked</c:if> />
+									Remember Me</label><br/>
 							<button type="submit" class="login loginmodal-submit inputField">Login</button>
 					</form:form>
 					<br/>

@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public boolean authenticateUser(User user) {
+		return userRepository.authenticateUser(user);
+	}
+
 }
