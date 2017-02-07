@@ -10,20 +10,19 @@ public class User {
 	private int contact;
 	private String address;
 	private Date dateOfBirth;
-	
-	
-
+	private String sex;
 	
 	public User() {};
 	
 	public User(String username, String password, 
-			String name, String email, int contact, 
+			String name, String sex, String email, int contact, 
 			String address,
 			Date dateOfBirth) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
+		this.sex = sex;
 		this.email = email;
 		this.contact = contact;
 		this.address = address;
@@ -73,4 +72,13 @@ public class User {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}	
+	
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
 }

@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.onlineproduct.domain.User;
 import com.onlineproduct.repository.UserRepository;
+import com.onlineproduct.service.UserService;
 
 @Controller
 public class LoginController {
 	
-	//@Autowired
-	//UserRepository userRepository;
+	@Autowired
+	UserService userService;
+	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getIndexPage() {
@@ -30,9 +32,9 @@ public class LoginController {
 		return "userRegistration";
 	}
 	
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST) 
+	@RequestMapping(value = "/userRegistration", method = RequestMethod.POST) 
 	public String processUserLoginForm(@ModelAttribute("addNewUser") User user) {
-		//userRepository.saveOrUpdate(user);
+		userService.saveOrUpdate(user);
 		return "redirect:/welcome";
 	}
 	
