@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,11 +40,12 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST) 
 		public String loginProcessForm(@ModelAttribute("user") User user,
 				boolean remember, @CookieValue(value = "username", defaultValue = "")
-				String username, HttpSession session, HttpServletResponse response) {
+				String username, Model model, HttpSession session, HttpServletResponse response) {
 		
 		
 		 boolean isValid = userService.authenticateUser(user);
 		 if (isValid) {
+			 User userInfo = userService.findLoggedInUserInfo(user.getUsername(), user.getPassword());
 			 
 			 if (remember && username.isEmpty()) {
 				 Cookie cookie = new Cookie("username", user.getUsername());
@@ -55,6 +57,7 @@ public class UserController {
 				 cookie.setMaxAge(0);
 				 response.addCookie(cookie);
 			 }
+			 session.setAttribute("userInfo", userInfo);
 			 return "redirect:/welcome";
 		 
 		 }
@@ -75,7 +78,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String getWelcomePage() {
+	public String getWelcomePage(Model model) {
 		return "homepage";
 	}
 

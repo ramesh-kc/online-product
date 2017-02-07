@@ -8,5 +8,7 @@ public interface UserRepository {
 	public void saveOrUpdate(User user);
 	
 	public boolean authenticateUser(User user);
+	
+	public User findLoggedInUserInfo(String username, String password);
 
 }

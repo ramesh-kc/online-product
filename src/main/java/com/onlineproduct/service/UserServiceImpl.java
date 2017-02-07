@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.authenticateUser(user);
 	}
 
+	@Override
+	public User findLoggedInUserInfo(String username, String password) {
+		return userRepository.findLoggedInUserInfo(username, password);
+	}
+
 }

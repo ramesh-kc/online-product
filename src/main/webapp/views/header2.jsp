@@ -21,14 +21,14 @@
 				<li><a href="logout">Logout</a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">24x7 Support <b class="caret"></b></a>
+					data-toggle="dropdown">${userInfo.name} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><strong>Call: </strong>641-451-3156</a></li>
-						<li><a href="#"><strong>Mail: </strong>shrestha@gmail.com</a></li>
+						<li><a href="#"><strong>Call: </strong>${userInfo.contact}</a></li>
+						<li><a href="#"><strong>Mail: </strong>${userInfo.email} </a></li>
 						<li class="divider"></li>
 						<li><a href="#"><strong>Address: </strong>
 								<div>
-									1000 N 4th Street,<br /> Fairfield, Iowa, USA
+									${userInfo.address} 
 								</div> </a></li>
 					</ul></li>
 			</ul>
