@@ -9,7 +9,7 @@
 	<h3>User Registration Form</h3>
 	<div class="col-lg-12 well">
 		<div class="row">
-			<form:form modelAttribute="addNewUser" method="post" id="formreg"
+			<form:form modelAttribute="user" method="post" id="formreg"
 				data-toggle="validator" role="form">
 
 				<div class="col-sm-12">

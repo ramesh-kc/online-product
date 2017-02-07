@@ -22,17 +22,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String getIndex() {
+	public String getIndex(@ModelAttribute("user") User user) {
 		return "index";
 	}
 
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.GET)
-	public String getUserRegistration(@ModelAttribute("addNewUser") User user) {
+	public String getUserRegistration(@ModelAttribute("user") User user) {
 		return "userRegistration";
 	}
 
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.POST)
-	public String processUserLoginForm(@ModelAttribute("addNewUser") User user) {
+	public String processUserLoginForm(@ModelAttribute("user") User user) {
 		userService.saveOrUpdate(user);
 		return "redirect:/welcome";
 	}

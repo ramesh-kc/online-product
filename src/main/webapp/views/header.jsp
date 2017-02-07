@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -56,13 +58,15 @@
 				<div class="loginmodal-container">
 					<h1>Login to Your Account</h1>
 					<br>
-					<form action="Login" method="POST">
-						<input type="text" name="txtUserLoginEmail" placeholder="Email"
-							required> <input type="password" name="txtLoginPassword"
-							placeholder="Password" required> <input type="submit"
-							name="login" class="login loginmodal-submit" value="Login">
-					</form>
-
+					<form:form modelAttribute="user" action="login" method="POST">
+						<form:input type="text" path="username" placeholder="Email"
+							required="required" /> <form:input type="password" path="password"
+							placeholder="Password" required="required" /> 
+							<label><input type="checkbox" name="remember" value="1"
+							${checked}> Remember Me</label><br/>
+							<button type="submit" class="login loginmodal-submit inputField">Login</button>
+					</form:form>
+					<br/>
 					<div class="login-help">
 						<a href="userRegistration">Register</a> - <a href="#">Forgot
 							Password</a>
