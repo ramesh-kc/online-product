@@ -149,8 +149,9 @@
 							</p>
 							<p>${product.description }</p>
 							<p>
-								<a
-									href="<c:url value="/productDetails/${product.productId}"></c:url>"
+								<a href="#" class="btn btn-success" role="button">Add To
+									Cart</a> <a
+									href="<c:url value="/productDetail/${product.productId}"></c:url>"
 									class="btn btn-primary" role="button">See Details</a>
 							</p>
 						</div>
