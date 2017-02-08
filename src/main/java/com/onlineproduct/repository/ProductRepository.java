@@ -12,4 +12,6 @@ public interface ProductRepository {
 	public List<Map<String, Object>> getAllProducts();
 	
 	public Product getProductById(int productId);
+	
+	public void deleteProduct(int productId);
 }
