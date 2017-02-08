@@ -55,7 +55,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public void deleteProduct(int productId) {
-		String sql = "DELECT FROM products WHERE productId = ? ";
+		String sql = "DELETE FROM products WHERE productId = ? ";
 		jdbcTemplate.update(sql, productId);
 	}
 	
