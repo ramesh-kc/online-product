@@ -33,7 +33,7 @@ public class UserController {
 	}
 	
 	/**
-	 * login authentication
+	 * login authentication for normal user and admin user
 	 * @param user
 	 * @return
 	 */
@@ -75,28 +75,54 @@ public class UserController {
 		 }
 		}
 
+	
+	/**
+	 * User Registration get method which display registration form.
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.GET)
 	public String getUserRegistration(@ModelAttribute("user") User user) {
 		return "userRegistration";
 	}
 
+	/**
+	 * User Registration Post Method
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.POST)
 	public String processUserLoginForm(@ModelAttribute("user") User user) {
 		userService.saveOrUpdate(user);
 		return "redirect:/welcome";
 	}
 
+	/**
+	 * Admin User Login Page
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/adminWelcome", method = RequestMethod.GET)
 	public String getAdminWelcomePage(Model model) {
 		return "adminHomepage";
 	}
 
+	/**
+	 * Normal User Login Page
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String getWelcomePage(Model model) {
 		return "normalUserHomepage";
 	}
 
 	
+	/**
+	 * Logout Page which invalid HttpSession.
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpSession session) {
 		session.invalidate();
