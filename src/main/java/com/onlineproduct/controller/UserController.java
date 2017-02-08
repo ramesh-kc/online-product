@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.onlineproduct.domain.User;
 
@@ -37,45 +38,41 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST) 
-		public String loginProcessForm(@ModelAttribute("user") User user,
-				boolean remember, @CookieValue(value = "username", defaultValue = "")
-				String username, Model model, HttpSession session, HttpServletResponse response) {
-		
-		
-		 boolean isValid = userService.authenticateUser(user);
-		 boolean isAdmin = userService.isAdmin(user);
-		 
-		 if (isValid) {
-			 User userInfo = userService.findLoggedInUserInfo(user.getUsername(), user.getPassword());
-			 
-			 if (remember && username.isEmpty()) {
-				 Cookie cookie = new Cookie("username", user.getUsername());
-				 cookie.setMaxAge(60);
-				 response.addCookie(cookie);
-			 
-			 } else if (!remember) {
-				 Cookie cookie = new Cookie("username", null);
-				 cookie.setMaxAge(0);
-				 response.addCookie(cookie);
-			 }
-			 session.setAttribute("userInfo", userInfo);
-			 session.setAttribute("userName", userInfo.getUsername());
-			 
-			 if (isAdmin) {
-				 return "redirect:/adminWelcome";
-			 
-			 } else {
-				 return "redirect:/welcome";
-			 }
-			 
-		 
-		 }
-		 else {
-			 
-			 return "index";
-		 }
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginProcessForm(@ModelAttribute("user") User user, boolean remember,
+			@CookieValue(value = "username", defaultValue = "") String username, Model model, HttpSession session,
+			HttpServletResponse response,RedirectAttributes redirectAttribute) {
 
+		boolean isValid = userService.authenticateUser(user);
+		boolean isAdmin = userService.isAdmin(user);
+
+		if (isValid) {
+			User userInfo = userService.findLoggedInUserInfo(user.getUsername(), user.getPassword());
+
+			if (remember && username.isEmpty()) {
+				Cookie cookie = new Cookie("username", user.getUsername());
+				cookie.setMaxAge(60);
+				response.addCookie(cookie);
+
+			} else if (!remember) {
+				Cookie cookie = new Cookie("username", null);
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
+			}
+			session.setAttribute("userInfo", userInfo);
+			session.setAttribute("userName", userInfo.getUsername());
+
+			if (isAdmin) {
+				return "redirect:/adminWelcome";
+
+			} else {
+				return "redirect:/welcome";
+			}
+
+		} else {
+			redirectAttribute.addFlashAttribute("errorMessage","Invalid Username or Password");
+			return "redirect:/index";
+		}
 	}
 
 	
@@ -95,10 +92,13 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.POST)
-	public String processUserLoginForm(@ModelAttribute("user") User user) {
-		System.out.println("USER" + user.getName());
+	public String processUserLoginForm(@ModelAttribute("user") User user, HttpSession session) {
 		userService.saveOrUpdate(user);
-		return "redirect:/welcome";
+		session.setAttribute("userName", user.getUsername());
+		if(user.getStatus().equals("ADMIN"))
+			return "redirect:/adminWelcome";
+		 else
+			 return "redirect:/welcome";
 	}
 
 	/**
@@ -121,12 +121,7 @@ public class UserController {
 		return "normalUserHomepage";
 	}
 
-	
-	/**
-	 * Logout Page which invalid HttpSession.
-	 * @param session
-	 * @return
-	 */
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpSession session) {
 		session.invalidate();

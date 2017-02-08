@@ -1,4 +1,10 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+<c:if test="${errorMessage != null}">
+	<h1 style="color:red;"><c:out value="${errorMessage}"/></h1>
+</c:if>
+
 <div>
 <a href="?locale=en_US">ENGLISH</a> | <a href="?locale=np_NP">NEPALI</a>
 </div>
