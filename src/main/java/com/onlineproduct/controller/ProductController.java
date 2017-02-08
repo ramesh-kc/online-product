@@ -56,6 +56,9 @@ public class ProductController {
 
 		MultipartFile productImage = product.getImage();
 
+		/**
+		 * random String generated code
+		 */
 		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
