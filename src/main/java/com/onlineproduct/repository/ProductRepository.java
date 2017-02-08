@@ -11,5 +11,5 @@ public interface ProductRepository {
 	
 	public List<Map<String, Object>> getAllProducts();
 	
-	public Product getProductById(String productId);
+	public Product getProductById(int productId);
 }

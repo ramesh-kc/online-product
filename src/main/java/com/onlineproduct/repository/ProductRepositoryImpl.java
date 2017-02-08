@@ -43,7 +43,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public Product getProductById(String productId) {
+	public Product getProductById(int productId) {
 		String sql = "SELECT * FROM products WHERE productId = ?";
 		
 		Product product =  (Product) jdbcTemplate.queryForObject(sql,
