@@ -13,12 +13,16 @@ public class Product {
 	private Date dateAdded;
 	private String category;
 	private String description;
+	private int productId;
+	private String imageName;
 	
+
 	public Product(){}
 	
-	public Product(String name, int userId, MultipartFile image, double price, Date dateManufacture,
-			Date dateAdded, String category, String description) {
+	public Product(int productId, String name, int userId, MultipartFile image, double price, Date dateManufacture,
+			Date dateAdded, String category, String description, String imageName) {
 		super();
+		this.productId = productId;
 		this.name = name;
 		this.userId = userId;
 		this.image = image;
@@ -27,6 +31,7 @@ public class Product {
 		this.dateAdded = dateAdded;
 		this.category = category;
 		this.description = description;
+		this.imageName = imageName;
 	}
 	public String getName() {
 		return name;
@@ -75,6 +80,22 @@ public class Product {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 	
 }

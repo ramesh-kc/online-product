@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="row">
 			<div class="col-md-3">
 				<div>
@@ -128,20 +129,24 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
+				
+				<c:forEach items="${productList}" var="product">
+				
 					<div class="col-md-4 text-center col-sm-6 col-xs-6">
 						<div class="thumbnail product-box">
-							<img src="assets/img/dummyimg.png" alt="" />
+							<img src="<c:url value="/assets/img/${product.imageName}.png"></c:url>" alt="image" />
+							<%-- <img src="assets/img/${product.name}.png" alt="image" /> --%>
 							<div class="caption">
 								<h3>
-									<a href="#">Samsung Galaxy </a>
+									<a href="#">${ product.name }</a>
 								</h3>
 								<p>
-									Price : <strong>$ 3,45,900</strong>
+									Price : <strong>$ ${product.price }</strong>
 								</p>
 								<p>
-									<a href="#">Ptional dismiss button </a>
+									<a href="#">${product.category }</a>
 								</p>
-								<p>Ptional dismiss button in tional dismiss button in</p>
+								<p>${product.description }</p>
 								<p>
 									<a href="#" class="btn btn-success" role="button">Add To
 										Cart</a> <a href="#" class="btn btn-primary" role="button">See
@@ -150,8 +155,10 @@
 							</div>
 						</div>
 					</div>
+					
+					</c:forEach>
 					<!-- /.col -->
-					<div class="col-md-4 text-center col-sm-6 col-xs-6">
+					<!-- <div class="col-md-4 text-center col-sm-6 col-xs-6">
 						<div class="thumbnail product-box">
 							<img src="assets/img/dummyimg.png" alt="" />
 							<div class="caption">
@@ -172,9 +179,9 @@
 								</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- /.col -->
-					<div class="col-md-4 text-center col-sm-6 col-xs-6">
+					<!-- <div class="col-md-4 text-center col-sm-6 col-xs-6">
 						<div class="thumbnail product-box">
 							<img src="assets/img/dummyimg.png" alt="" />
 							<div class="caption">
@@ -195,7 +202,7 @@
 								</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
