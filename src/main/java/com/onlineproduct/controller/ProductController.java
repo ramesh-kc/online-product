@@ -45,11 +45,28 @@ public class ProductController {
 		return "adminProductDetailsPage";
 		
 	}
-	@RequestMapping(value = "/deleteProduct{productId}", method = RequestMethod.DELETE)
+	
+	@RequestMapping(value = "/deleteProduct/{productId}", method = RequestMethod.GET)
 	public String processDeleteProduct(Model model, @PathVariable("productId") int productId) {
 		 productService.deleteProduct(productId);
 		
 		return "redirect:/adminWelcome";
+		
+	}
+	
+	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.GET)
+	public String getEditProduct(@ModelAttribute("product") Product product, @PathVariable("productId") int productId,Model model) {
+		 product = productService.getProductById(productId);
+		
+		return "editProduct";
+		
+	}
+	
+	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.GET)
+	public String processEditProduct(@ModelAttribute("product") Product product, @PathVariable("productId") int productId,Model model) {
+		 
+		
+		return "editProduct";
 		
 	}
 	
