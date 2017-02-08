@@ -9,37 +9,51 @@
 		<put-attribute name="i_body1" value="" />
 		<put-attribute name="footer" value="/views/footer.jsp" />
 	</definition>
-	
+
 	<definition name="base.definition2" template="/template/master_template2.jsp">
 		<put-attribute name="header2" value="" />
 		<put-attribute name="i_body2" value="" />
 		<put-attribute name="footer" value="/views/footer.jsp" />
 	</definition>
-	
-	
+
+
 	<definition name="index" extends="base.definition">
 		<put-attribute name="i_body1" value="/views/index_body1.jsp" />
 	</definition>
-	
+
 	<definition name="userRegistration" extends="base.definition">
 		<put-attribute name="i_body1" value="/views/user_registration_body.jsp" />
 	</definition>
-	
+
 	<definition name="adminHomepage" extends="base.definition2">
 		<put-attribute name="header2" value="/views/admin_header.jsp" />
 		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
 	</definition>
-	
+
 	<definition name="normalUserHomepage" extends="base.definition2">
 		<put-attribute name="header2" value="/views/normal_user_header.jsp" />
 		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
 	</definition>
-	
+
 	<definition name="addProduct" extends="base.definition2">
-	<put-attribute name="header2" value="/views/normal_user_header.jsp" />
+		<put-attribute name="header2" value="/views/admin_header.jsp" />
 		<put-attribute name="i_body2" value="/views/add_product_body.jsp" />
 	</definition>
-	
-	
-	
+
+	<definition name="adminProductDetailsPage" extends="base.definition2">
+		<put-attribute name="header2" value="/views/admin_header.jsp" />
+		<put-attribute name="i_body2"
+			value="/views/admin_product_detail_body.jsp" />
+	</definition>
+
+	<definition name="editProduct" extends="base.definition2">
+		<put-attribute name="header2" value="/views/admin_header.jsp" />
+		<put-attribute name="i_body2"
+			value="/views/edit_product_body.jsp" />
+	</definition>
+
+
+
+
+
 </tiles-definitions>

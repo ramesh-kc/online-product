@@ -37,40 +37,38 @@ public class ProductController {
 	public String getIndex(@ModelAttribute("product") Product product) {
 		return "addProduct";
 	}
-	
+
 	@RequestMapping(value = "/productDetails/{productId}", method = RequestMethod.GET)
 	public String showDetailsProductPage(Model model, @PathVariable("productId") int productId) {
 		model.addAttribute("product", productService.getProductById(productId));
-		
+
 		return "adminProductDetailsPage";
-		
+
 	}
-	
+
 	@RequestMapping(value = "/deleteProduct/{productId}", method = RequestMethod.GET)
 	public String processDeleteProduct(Model model, @PathVariable("productId") int productId) {
-		 productService.deleteProduct(productId);
-		
-		return "redirect:/adminWelcome";
-		
-	}
-	
-	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.GET)
-	public String getEditProduct(@ModelAttribute("product") Product product, @PathVariable("productId") int productId,Model model) {
-		 product = productService.getProductById(productId);
-		
-		return "editProduct";
-		
-	}
-	
-	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.GET)
-	public String processEditProduct(@ModelAttribute("product") Product product, @PathVariable("productId") int productId,Model model) {
-		 
-		
-		return "editProduct";
-		
-	}
-	
+		productService.deleteProduct(productId);
 
+		return "redirect:/adminWelcome";
+
+	}
+
+	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.GET)
+	public String getEditProduct(@PathVariable("productId") int productId, Model model) {
+
+		model.addAttribute("product", productService.getProductById(productId));
+		return "editProduct";
+
+	}
+
+	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.POST)
+	public String processEditProduct(@ModelAttribute("product") Product product,
+			@PathVariable("productId") int productId, Model model) {
+		productService.updateProduct(product, productId);
+		return "redirect:/adminWelcome";
+
+	}
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public String processAddProductForm(@ModelAttribute("product") Product product, HttpServletRequest request) {
@@ -86,15 +84,15 @@ public class ProductController {
 		 * random String generated code
 		 */
 		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        
-        while (salt.length() < 18) {
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
-        }
-        String randomStringGen = salt.toString();
-        
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+
+		while (salt.length() < 18) {
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String randomStringGen = salt.toString();
+
 		String all = servletContext.getRealPath("/");
 		String half = all.substring(all.indexOf("/"), all.indexOf("/.metadata"));
 
@@ -109,7 +107,7 @@ public class ProductController {
 			}
 		}
 		product.setImageName(randomStringGen);
-		
+
 		productService.addProduct(product);
 		return "redirect:/adminWelcome";
 	}

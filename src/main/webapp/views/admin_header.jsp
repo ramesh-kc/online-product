@@ -9,7 +9,7 @@ var session = <%=userSession%>;
 			document.forms['member_login'].submit();
 	}
 </script>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -20,7 +20,7 @@ var session = <%=userSession%>;
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><strong>ONLINE</strong> Product
+			<a class="navbar-brand" href="<c:url value="/adminWelcome" />"><strong>ONLINE</strong> Product
 				System</a>
 		</div>
 
@@ -30,8 +30,9 @@ var session = <%=userSession%>;
 
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="addProduct">Add New Product</a></li>
-				<li><a href="logout">Logout</a></li>
+			
+				<li><a href="<c:url value="/addProduct" />"> Add Product</a></li>
+				<li><a href="<c:url value="/logout"></c:url>">Logout</a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">${userInfo.name} <b class="caret"></b></a>

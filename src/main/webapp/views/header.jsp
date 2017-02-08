@@ -23,7 +23,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				
 				<li><a data-toggle="modal" data-target="#login-modal"><spring:message code = "label.login"/></a></li>
-				<li><a href="userRegistration"><spring:message code="label.signup"/></a></li>
+				<li><a href="<c:url value="/userRegistration" />"><spring:message code="label.signup"/></a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><spring:message code ="label.support"/><b class="caret"></b></a>

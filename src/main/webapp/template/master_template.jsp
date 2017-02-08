@@ -31,7 +31,7 @@
 	rel="stylesheet">
 <!-- <link href="assets/ItemSlider/css/main-style.css" rel="stylesheet" /> -->
 <!-- custom CSS here -->
-<link href="assets/css/style.css" rel="stylesheet" />
+<link href="<c:url value="/assets/css/style.css" />" rel="stylesheet" />
 
 <!--Core JavaScript file  -->
 
