@@ -45,7 +45,7 @@ public class ProductController {
 		return "redirect:/productDetailsPage";
 		
 	}
-	@RequestMapping(value = "/deleteProduct{productId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteProduct/{productId}", method = RequestMethod.DELETE)
 	public String processDeleteProduct(Model model, @PathVariable("productId") int productId) {
 		 productService.deleteProduct(productId);
 		
