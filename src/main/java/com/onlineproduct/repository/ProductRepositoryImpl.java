@@ -61,11 +61,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public void updateProduct(Product product, int productId) {
-		String sql = "UPDATE products set name = ? imageName = ? price = ? dateAdded = ? category = ? description = ?"
+		String sql = "UPDATE products set name = ? , imageName = ? , price = ? , dateManufacture = ?,  category = ? , description = ?"
 				+ " where productId = ? ";
 		
-		jdbcTemplate.update(sql, product.getName(), product.getImageName(), product.getPrice(), product.getDateAdded(), 
-				product.getCategory(), product.getDescription(), productId);
+		jdbcTemplate.update(sql, 
+				new Object[] { product.getName(), product.getImageName(), product.getPrice(), product.getDateManufacture(), 
+				product.getCategory(), product.getDescription(), productId });
 		
 	}
 	

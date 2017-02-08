@@ -48,8 +48,25 @@ public class ProductController {
 
 	@RequestMapping(value = "/deleteProduct/{productId}", method = RequestMethod.GET)
 	public String processDeleteProduct(Model model, @PathVariable("productId") int productId) {
-		productService.deleteProduct(productId);
-
+		
+		Product singleProduct = productService.getProductById(productId);
+		
+		String all = servletContext.getRealPath("/");
+		String half = all.substring(all.indexOf("/"), all.indexOf("/.metadata"));
+		
+		
+		
+		String fileNameInsideAssests = singleProduct.getImageName();
+		String deletePath = half + servletContext.getContextPath() + "/src/main/webapp/assets/img/" + fileNameInsideAssests
+				+ ".png";
+		
+		System.out.print(deletePath);
+	    File deleteFile = new File(deletePath);
+	    if (deleteFile.exists()) {
+	    	deleteFile.delete();     
+	    }
+	    
+	    productService.deleteProduct(productId);
 		return "redirect:/adminWelcome";
 
 	}
@@ -65,7 +82,53 @@ public class ProductController {
 	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.POST)
 	public String processEditProduct(@ModelAttribute("product") Product product,
 			@PathVariable("productId") int productId, Model model) {
+		
+		Product singleProduct = productService.getProductById(productId);
+		
+		String all = servletContext.getRealPath("/");
+		String half = all.substring(all.indexOf("/"), all.indexOf("/.metadata"));
+		
+		
+		
+		String fileNameInsideAssests = singleProduct.getImageName();
+		String deletePath = half + servletContext.getContextPath() + "/src/main/webapp/assets/img/" + fileNameInsideAssests
+				+ ".png";
+		
+	    File deleteFile = new File(deletePath);
+	    if (deleteFile.exists()) {
+	    	deleteFile.delete();     
+	    }
+		
+		MultipartFile productImage = product.getImage();
+
+		/**
+		 * random String generated code
+		 */
+		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+
+		while (salt.length() < 18) {
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String randomStringGen = salt.toString();
+
+		
+
+		String path = half + servletContext.getContextPath() + "/src/main/webapp/assets/img/" + randomStringGen
+				+ ".png";
+
+		if (productImage != null && !productImage.isEmpty()) {
+			try {
+				productImage.transferTo(new File(path));
+			} catch (Exception e) {
+				throw new RuntimeException("Product Image saving failed", e);
+			}
+		}
+		product.setImageName(randomStringGen);
 		productService.updateProduct(product, productId);
+		
 		return "redirect:/adminWelcome";
 
 	}
