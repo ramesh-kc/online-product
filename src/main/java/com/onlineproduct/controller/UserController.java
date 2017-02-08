@@ -1,5 +1,8 @@
 package com.onlineproduct.controller;
 
+import java.io.InputStream;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mysql.cj.jdbc.Blob;
 import com.onlineproduct.domain.User;
-
+import com.onlineproduct.service.ProductService;
 import com.onlineproduct.service.UserService;
 
 @Controller
@@ -22,6 +26,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ProductService productService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getIndexPage() {
@@ -108,6 +115,11 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/adminWelcome", method = RequestMethod.GET)
 	public String getAdminWelcomePage(Model model) {
+		
+		for(Map<String, Object> row: productService.getAllProducts()){
+		};
+		
+		model.addAttribute("productList", productService.getAllProducts());
 		return "adminHomepage";
 	}
 

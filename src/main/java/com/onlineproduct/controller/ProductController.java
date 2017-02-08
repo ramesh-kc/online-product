@@ -38,6 +38,6 @@ public class ProductController {
 		product.setUserId(userId);
 		
 		productService.addProduct(product);
-		return "addProduct";
+		return "redirect:/adminWelcome";
 	}
 }

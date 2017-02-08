@@ -23,7 +23,6 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public void saveOrUpdate(User user) {
 		
-		System.out.println("Status: " + user.getStatus());
 		String passwordmd = "";
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
