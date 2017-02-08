@@ -45,6 +45,14 @@ public class ProductController {
 		return "adminProductDetailsPage";
 		
 	}
+	@RequestMapping(value = "/deleteProduct{productId}", method = RequestMethod.DELETE)
+	public String processDeleteProduct(Model model, @PathVariable("productId") int productId) {
+		 productService.deleteProduct(productId);
+		
+		return "redirect:/adminWelcome";
+		
+	}
+	
 
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
