@@ -85,6 +85,7 @@ public class UserController {
 
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.POST)
 	public String processUserLoginForm(@ModelAttribute("user") User user) {
+		System.out.println("USER" + user.getName());
 		userService.saveOrUpdate(user);
 		return "redirect:/welcome";
 	}
