@@ -11,17 +11,17 @@
 		<div class="row">
 			<form:form modelAttribute="user" method="post" id="formreg"
 				data-toggle="validator" role="form">
-
-
-				<div class="form-group">
+				
+				<div class="col-sm-12">
+				
+					<div class="form-group">
 						<label>Status</label><br>
 						<form:select path="status" class="inputField">
 							<form:option value="Normal" label="NORMAL" class="inputField"/>
 							<form:option value="Admin" label="ADMIN" class="inputField"/>
 						</form:select>
 					</div>
-				
-				<div class="col-sm-12">
+					
 					<div class="form-group">
 						<label>Full Name</label>
 						<form:input path="name" type="text" required="required"

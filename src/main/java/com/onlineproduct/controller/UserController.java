@@ -31,7 +31,7 @@ public class UserController {
 	public String getIndex(@ModelAttribute("user") User user) {
 		return "index";
 	}
-	
+
 	/**
 	 * login authentication for normal user and admin user
 	 * @param user
@@ -60,6 +60,7 @@ public class UserController {
 				 response.addCookie(cookie);
 			 }
 			 session.setAttribute("userInfo", userInfo);
+			 session.setAttribute("userName", userInfo.getUsername());
 			 
 			 if (isAdmin) {
 				 return "redirect:/adminWelcome";
@@ -73,7 +74,8 @@ public class UserController {
 		 else {
 			 return "index";
 		 }
-		}
+
+	}
 
 	
 	/**
@@ -93,6 +95,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/userRegistration", method = RequestMethod.POST)
 	public String processUserLoginForm(@ModelAttribute("user") User user) {
+		System.out.println("USER" + user.getName());
 		userService.saveOrUpdate(user);
 		return "redirect:/welcome";
 	}
@@ -125,6 +128,12 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutUser(HttpSession session) {
+		session.invalidate();
+		return "redirect:/index";
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String loginRequired(HttpSession session) {
 		session.invalidate();
 		return "redirect:/index";
 	}

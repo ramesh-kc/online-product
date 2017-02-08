@@ -68,6 +68,33 @@
 		    <version>4.3.2.RELEASE</version>
 		</dependency>
 		
+
+		
+		<!-- START - Security Dependencies -->
+		<!-- <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.5.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-asm</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>3.2.5.RELEASE</version>
+		</dependency> -->
+		<!-- END - Security Dependencies -->
+		
+		
 		<!-- Apache Commons FileUpload --> 
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -81,6 +108,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
+
         
     </dependencies>
     

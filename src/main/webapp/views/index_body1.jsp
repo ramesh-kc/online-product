@@ -9,7 +9,7 @@
 
 
 					<spring:message code="label.todaysOffer"/> : &nbsp; <span class="glyphicon glyphicon-cog"></span>&nbsp;40
-					% off on purchase of $ 2,000 and above till 24 dec !
+					% off on purchase of $ 2,000 and above till 1st March !
 
 
 				</div>
