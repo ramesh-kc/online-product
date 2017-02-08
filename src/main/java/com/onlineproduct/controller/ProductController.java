@@ -38,13 +38,14 @@ public class ProductController {
 		return "addProduct";
 	}
 	
-	@RequestMapping(value = "/productDetails", method = RequestMethod.GET)
+	@RequestMapping(value = "/productDetails/{productId}", method = RequestMethod.GET)
 	public String showDetailsProductPage(Model model, @PathVariable("productId") int productId) {
 		model.addAttribute("product", productService.getProductById(productId));
 		
-		return "redirect:/productDetailsPage";
+		return "adminProductDetailsPage";
 		
 	}
+
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public String processAddProductForm(@ModelAttribute("product") Product product, HttpServletRequest request) {
