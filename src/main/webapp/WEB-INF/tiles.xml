@@ -32,7 +32,7 @@
 
 	<definition name="normalUserHomepage" extends="base.definition2">
 		<put-attribute name="header2" value="/views/normal_user_header.jsp" />
-		<put-attribute name="i_body2" value="/views/index_body2.jsp" />
+		<put-attribute name="i_body2" value="/views/index_body3.jsp" />
 	</definition>
 
 	<definition name="addProduct" extends="base.definition2">
@@ -50,6 +50,12 @@
 		<put-attribute name="header2" value="/views/admin_header.jsp" />
 		<put-attribute name="i_body2"
 			value="/views/edit_product_body.jsp" />
+	</definition>
+	
+	<definition name="normalProductDetailsPage" extends="base.definition2">
+		<put-attribute name="header2" value="/views/normal_user_header.jsp" />
+		<put-attribute name="i_body2"
+			value="/views/normal_product_detail_body.jsp" />
 	</definition>
 
 

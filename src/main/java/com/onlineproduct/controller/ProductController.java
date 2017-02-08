@@ -174,4 +174,12 @@ public class ProductController {
 		productService.addProduct(product);
 		return "redirect:/adminWelcome";
 	}
+
+	@RequestMapping(value = "/productDetail/{productId}", method = RequestMethod.GET)
+	public String showProductDetail(Model model, @PathVariable("productId") int productId) {
+		model.addAttribute("product", productService.getProductById(productId));
+
+		return "normalProductDetailsPage";
+
+	}
 }

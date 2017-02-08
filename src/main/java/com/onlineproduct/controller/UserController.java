@@ -102,6 +102,7 @@ public class UserController {
 	public String processUserLoginForm(@ModelAttribute("user") User user, HttpSession session) {
 		userService.saveOrUpdate(user);
 		session.setAttribute("userName", user.getUsername());
+		session.setAttribute("userInfo", user);
 		if(user.getStatus().equals("ADMIN"))
 			return "redirect:/adminWelcome";
 		 else
@@ -130,6 +131,12 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String getWelcomePage(Model model) {
+		
+		for(Map<String, Object> row: productService.getAllProducts()){
+		};
+		
+		model.addAttribute("productList", productService.getAllProducts());
+		
 		return "normalUserHomepage";
 	}
 
