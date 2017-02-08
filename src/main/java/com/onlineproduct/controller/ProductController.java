@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +37,14 @@ public class ProductController {
 	public String getIndex(@ModelAttribute("product") Product product) {
 		return "addProduct";
 	}
+	
+	@RequestMapping(value = "/productDetails", method = RequestMethod.GET)
+	public String showDetailsProductPage(Model model, @PathVariable("productId") int productId) {
+		model.addAttribute("product", productService.getProductById(productId));
+		
+		return "redirect:/productDetailsPage";
+		
+	}
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public String processAddProductForm(@ModelAttribute("product") Product product, HttpServletRequest request) {
@@ -47,6 +56,9 @@ public class ProductController {
 
 		MultipartFile productImage = product.getImage();
 
+		/**
+		 * random String generated code
+		 */
 		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
@@ -57,19 +69,12 @@ public class ProductController {
         }
         String randomStringGen = salt.toString();
         
-        System.out.println("String:" + randomStringGen);
-		
 		String all = servletContext.getRealPath("/");
-		System.out.println("all:" + all);
 		String half = all.substring(all.indexOf("/"), all.indexOf("/.metadata"));
-		
-		System.out.println("half: " + half);
 
 		String path = half + servletContext.getContextPath() + "/src/main/webapp/assets/img/" + randomStringGen
 				+ ".png";
 
-		System.out.println("path: " + path);
-		// isEmpty means file exists BUT NO Content
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
 				productImage.transferTo(new File(path));
@@ -78,7 +83,6 @@ public class ProductController {
 			}
 		}
 		product.setImageName(randomStringGen);
-		System.out.println("path name: " + path);
 		
 		productService.addProduct(product);
 		return "redirect:/adminWelcome";

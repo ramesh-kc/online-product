@@ -3,6 +3,7 @@ package com.onlineproduct.repository;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -41,4 +42,15 @@ public class ProductRepositoryImpl implements ProductRepository {
 		
 	}
 
+	@Override
+	public Product getProductById(int productId) {
+		String sql = "SELECT * FROM products WHERE productId = ?";
+		
+		Product product =  (Product) jdbcTemplate.queryForObject(sql,
+				new Object[] {productId}, 
+				new BeanPropertyRowMapper<>(Product.class));
+		
+		return product;
+	}
+	
 }

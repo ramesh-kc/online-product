@@ -10,4 +10,6 @@ public interface ProductRepository {
 	public void addProduct(Product product);
 	
 	public List<Map<String, Object>> getAllProducts();
+	
+	public Product getProductById(int productId);
 }
