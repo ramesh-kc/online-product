@@ -10,4 +10,6 @@ public interface ProductService {
 	public void addProduct(Product product);
 	
 	public List<Map<String, Object>> getAllProducts();
+	
+	public Product getProductById(String productId);
 }

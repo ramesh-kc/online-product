@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,19 +56,12 @@ public class ProductController {
         }
         String randomStringGen = salt.toString();
         
-        System.out.println("String:" + randomStringGen);
-		
 		String all = servletContext.getRealPath("/");
-		System.out.println("all:" + all);
 		String half = all.substring(all.indexOf("/"), all.indexOf("/.metadata"));
-		
-		System.out.println("half: " + half);
 
 		String path = half + servletContext.getContextPath() + "/src/main/webapp/assets/img/" + randomStringGen
 				+ ".png";
 
-		System.out.println("path: " + path);
-		// isEmpty means file exists BUT NO Content
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
 				productImage.transferTo(new File(path));
@@ -78,7 +70,6 @@ public class ProductController {
 			}
 		}
 		product.setImageName(randomStringGen);
-		System.out.println("path name: " + path);
 		
 		productService.addProduct(product);
 		return "redirect:/adminWelcome";
