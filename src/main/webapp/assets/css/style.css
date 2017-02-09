@@ -316,3 +316,7 @@ background-color:#EB0429;
 .inputField{
 	width:100%;
 }
+
+.error{
+	color: red;
+}
