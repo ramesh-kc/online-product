@@ -17,19 +17,18 @@
 	href="<c:url value="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <%-- <link href="<c:url value="/assets/css/bootstrap.css" />" rel="stylesheet"> --%>
-<!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
-<!-- Fontawesome core CSS -->
-<link href="<c:url value="assets/css/font-awesome.min.css" />"
-	rel="stylesheet">
-<!-- <link href="assets/css/font-awesome.min.css" rel="stylesheet" /> -->
-<!--GOOGLE FONT -->
 
+<!-- Fontawesome core CSS -->
+<link href="<c:url value="/assets/css/font-awesome.min.css" />" rel="stylesheet">
+
+<!--GOOGLE FONT -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
-	rel='stylesheet' type='text/css'>
+	rel='stylesheet' type='text/css' />
+	
 <!--Slide Show Css -->
-<link href="<c:url value="assets/ItemSlider/css/main-style.css" />"
+<link href="<c:url value="/assets/ItemSlider/css/main-style.css" />"
 	rel="stylesheet">
-<!-- <link href="assets/ItemSlider/css/main-style.css" rel="stylesheet" /> -->
+	
 <!-- custom CSS here -->
 <link href="<c:url value="/assets/css/style.css" />" rel="stylesheet" />
 
@@ -38,14 +37,14 @@
 <script src="<c:url value="/assets/js/jquery-1.10.2.js" /> "></script>
 <!--bootstrap JavaScript file  -->
 
-<script src="<c:url value="assets/js/bootstrap.js" />"></script>
+<script src="<c:url value="/assets/js/bootstrap.js" />"></script>
 <!--Slider JavaScript file  -->
 
 <script
-	src="<c:url value="assets/ItemSlider/js/modernizr.custom.63321.js" /> "></script>
+	src="<c:url value="/assets/ItemSlider/js/modernizr.custom.63321.js" /> "></script>
 
 <script
-	src="<c:url value="assets/ItemSlider/js/jquery.catslider.js" /> "></script>
+	src="<c:url value="/assets/ItemSlider/js/jquery.catslider.js" /> "></script>
 
 </head>
 <body>

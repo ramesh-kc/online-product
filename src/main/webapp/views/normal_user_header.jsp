@@ -30,7 +30,7 @@ var session = <%=userSession%>;
 
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout">Logout</a></li>
+				<li><a href="<c:url value="/logout"></c:url>">Logout</a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">${userInfo.name} <b class="caret"></b></a>
