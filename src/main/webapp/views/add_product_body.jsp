@@ -45,7 +45,7 @@
 									type="text" 
 									required="required"
 									id="dateManufacture" 
-									placeholder="Ex: MM/DD/YYYY"
+									placeholder="Ex: /DD/MM/YYYY"
 									class="inputField form-control" />
 									
 					 	<form:errors  path = "dateManufacture" 

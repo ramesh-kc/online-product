@@ -2,6 +2,7 @@ package com.onlineproduct.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -19,10 +20,12 @@ public class Product {
 	
 	private MultipartFile image;
 	
+	
+	@Min(value = 0, message = "The value must be positive")
 	@NotNull(message = "price should not be null.")
 	private double price;
 	
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	@Past(message = "manufacture date should be greater than today.")
 	private Date dateManufacture;
 	

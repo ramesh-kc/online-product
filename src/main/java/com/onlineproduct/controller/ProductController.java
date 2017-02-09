@@ -44,7 +44,7 @@ public class ProductController {
 
 	@InitBinder
 	 public void initBinder(final WebDataBinder binder){
-		 final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		 final SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		 binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,
 		 true));
 	 }
@@ -96,8 +96,12 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/editProduct/{productId}", method = RequestMethod.POST)
-	public String processEditProduct(@ModelAttribute("product") Product product,
+	public String processEditProduct(@ModelAttribute("product") @Valid Product product, BindingResult result,
 			@PathVariable("productId") int productId, Model model) {
+		
+		if (result.hasErrors()) {
+			return "editProduct";
+		}
 		
 		Product singleProduct = productService.getProductById(productId);
 		
