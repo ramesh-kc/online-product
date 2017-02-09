@@ -18,15 +18,13 @@
 				</div>
 				<table class="table table-hover">
 					<tr>
-						<th>---ID---</th>
+						<th>Product Id</th>
 						<th>Name</th>
 						<th>Unit price</th>
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Action</th>
 					</tr>
-				</table>
-				<table id="cart_table" class="table table-hover">
 
 					<c:forEach var="item" items="${cart.cartItems}">
 						<tr>
@@ -43,6 +41,7 @@
 					</c:forEach>
 
 					<tr>
+						<th></th>
 						<th></th>
 						<th></th>
 						<th>Grand Total</th>

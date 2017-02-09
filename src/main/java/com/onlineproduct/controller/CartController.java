@@ -52,11 +52,8 @@ public class CartController {
 	@RequestMapping(value = "/addToCart/{productId}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void addToCart(@PathVariable("productId") String productId,HttpServletRequest request){
-		System.out.println("INSIDE "+productId);
 		
 		String sessionId = request.getSession(true).getId();
-		
-		System.out.println("SessionID: "+sessionId);
 		
 		Cart cart = cartService.read(sessionId);
 		if(cart== null) {
@@ -69,8 +66,7 @@ public class CartController {
 		}
 		
 		cart.addCartItem(new CartItem(product));
-		
-		
+
 		System.out.printf("Product ITEM: %s\n",product.getName());
 		System.out.printf("CART ITEM: %s\n",cart.getCartItems().size());
 	

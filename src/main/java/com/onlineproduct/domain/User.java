@@ -2,15 +2,45 @@ package com.onlineproduct.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class User {
+	@Size(min =  6, max = 15, message = "Your username must in between 6 and 15 characters.")
 	private String username;
+	
+	@Size(min = 6, max  = 15, message = "Your password must in bewteen 6 and 15 characters.")
 	private String password;
+	
+	@Pattern(regexp = "[a-zA-z]*")
+	@NotEmpty(message  = "Please enter your name. Make sure that you enter only alphabets and space.")
 	private String name;
+	
+	@NotEmpty(message = "Please enter your email")
+	@Email(message = "Your email is incorrect")
 	private String email;
+	
+	@NotNull
 	private int contact;
+	
+	@NotEmpty(message  = "Address cannot be empty")
+	@Size(max = 50,  message = "Address cannot be more than 50 characters")
 	private String address;
+	
+	@NotNull(message = "Date of birth cannot be empty")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Past(message = "Date of birth cannot be greater than or equal to current date")
 	private Date dateOfBirth;
+	
+	@NotNull(message = "Gender is required")
 	private String sex;
+	
 	private String status;
 	
 	public User() {};
