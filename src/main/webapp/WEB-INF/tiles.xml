@@ -57,6 +57,12 @@
 		<put-attribute name="i_body2"
 			value="/views/normal_product_detail_body.jsp" />
 	</definition>
+	
+	<definition name="userCart" extends="base.definition2">
+		<put-attribute name="header2" value="/views/normal_user_header.jsp" />
+		<put-attribute name="i_body2"
+			value="/views/user_cart.jsp" />
+	</definition>
 
 
 

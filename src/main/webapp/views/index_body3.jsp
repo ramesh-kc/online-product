@@ -106,9 +106,8 @@
 		<!-- /.div -->
 		<div class="row">
 			<div class="btn-group alg-right-pad">
-				<button type="button" class="btn btn-default">
-					<strong>1235 </strong>items
-				</button>
+				<a href="<c:url value="/cart"></c:url>" 
+					class="btn btn-default" role="button">View My Cart</a>
 				<div class="btn-group">
 					<button type="button" class="btn btn-danger dropdown-toggle"
 						data-toggle="dropdown">
@@ -149,8 +148,8 @@
 							</p>
 							<p>${product.description }</p>
 							<p>
-								<a href="#" class="btn btn-success" role="button">Add To
-									Cart</a> <a
+								<a href="#" onclick="addToCart('${product.productId}')"
+									class="btn btn-success" role="button">Add To Cart</a> <a
 									href="<c:url value="/productDetail/${product.productId}"></c:url>"
 									class="btn btn-primary" role="button">See Details</a>
 							</p>
@@ -336,3 +335,26 @@
 	<!-- /.col -->
 </div>
 <!-- /.row -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	var cartId;
+	
+	addToCart = function(productId){
+			$.ajax({
+		 		url: '/online-product/addToCart/' + productId,
+		 		type: 'GET',
+				dataType: "json",
+				success: function(response){
+	 		 		alert("Product Successfully added to the Cart!");
+
+				},
+				error: function(){						
+					alert('Error while request..');
+				}
+			});
+		}
+	
+});
+</script>
