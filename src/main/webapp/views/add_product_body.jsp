@@ -18,9 +18,13 @@
 				<div class="col-sm-12">
 					<div class="form-group">
 						<label>Product Title</label>
-						<form:input path="name" type="text" required="required"
-							placeholder="Enter Product Title " class="inputField" />
-
+						<form:input path="name" 
+									type="text" 
+									required="required"
+							        placeholder="Enter Product Title " 
+							        class="inputField" />
+					<form:errors  path = "name" 
+								  cssClass = "error" />
 					</div>
 					
 					<div class="form-group">
@@ -35,21 +39,40 @@
 					
 					<div class="form-group">
 						
-						<label class="control-label" for="dateManufacture">Date Manufacture</label>
-						<form:input path="dateManufacture" type="text" required="required"
-							id="dateManufacture" placeholder="Ex: MM/DD/YYYY"
-							class="inputField form-control" />
+						<label class="control-label" 
+									for="dateManufacture">Date Manufacture</label>
+						<form:input path="dateManufacture" 
+									type="text" 
+									required="required"
+									id="dateManufacture" 
+									placeholder="Ex: /DD/MM/YYYY"
+									class="inputField form-control" />
+									
+					 	<form:errors  path = "dateManufacture" 
+					 				  cssClass = "error" />			
 					</div>
 					
 					<div class="form-group">
 						<label>Price</label>
-						<form:input path="price" type="number" required="required"
-							placeholder="Example : 450" class="inputField" />
+						<form:input path="price" 
+									type="number" 
+									required="required"
+									placeholder="Example : 450" 
+									class="inputField" />
+									
+						<form:errors  path = "price" 
+					 				  cssClass = "error" />		
 					</div>
 					<div class="form-group">
 						<label>Description</label>
-						<form:textarea path="description" rows="5" cols="30" required="required"
-							placeholder="Product Description..." class="inputField" />
+						<form:textarea path="description" 
+										rows="5" cols="30" 
+										required="required"
+										placeholder="Product Description..." 
+										class="inputField" />
+					<form:errors  path = "description" 
+					 				  cssClass = "error" />			
+										
 					</div>
 					<div class="form-group">
 						<label>Product Photo</label>

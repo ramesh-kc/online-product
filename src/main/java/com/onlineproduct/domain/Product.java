@@ -2,18 +2,43 @@ package com.onlineproduct.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Product {
+	
+	@NotEmpty(message = "product name can not be empty.")
 	private String name;
+	
 	private int userId;
+	
 	private MultipartFile image;
+	
+	
+	@Min(value = 0, message = "The value must be positive")
+	@NotNull(message = "price should not be null.")
 	private double price;
+	
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
+	@Past(message = "manufacture date should be greater than today.")
 	private Date dateManufacture;
+	
 	private Date dateAdded;
+	
+	@NotNull(message = "category can not be empty")
 	private String category;
+	
+	@Size(min = 10, message = "description should be at least 10")
 	private String description;
+	
 	private int productId;
+	
 	private String imageName;
 	
 
