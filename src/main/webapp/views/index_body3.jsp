@@ -100,7 +100,7 @@
 		<div>
 			<ol class="breadcrumb">
 				<li><a href="#">Home</a></li>
-				<li class="active">Electronics</li>
+				<li class="active">All Product</li>
 			</ol>
 		</div>
 		<!-- /.div -->

@@ -25,7 +25,7 @@
 										class="inputField"/>
 						</form:select>
 						<form:errors path="status" 
-										cssStyle="error" />
+										cssClass="error" />
 					</div>
 					
 					<div class="form-group">
