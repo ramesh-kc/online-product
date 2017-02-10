@@ -20,7 +20,7 @@ public class User {
 	@Size(min = 6, max  = 15, message = "Your password must in bewteen 6 and 15 characters.")
 	private String password;
 	
-	@Pattern(regexp = "[a-zA-z]*")
+	@Pattern(regexp = "[a-zA-z ]*")
 	@NotEmpty(message  = "Please enter your name. Make sure that you enter only alphabets and space.")
 	private String name;
 	

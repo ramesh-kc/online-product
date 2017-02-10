@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Product {
 	
-	@NotEmpty(message = "product name can not be empty.")
+	@NotEmpty(message = "Product name can not be empty.")
 	private String name;
 	
 	private int userId;
@@ -21,20 +21,20 @@ public class Product {
 	private MultipartFile image;
 	
 	
-	@Min(value = 0, message = "The value must be positive")
-	@NotNull(message = "price should not be null.")
+	@Min(value = 0, message = "The value must be positive.")
+	@NotNull(message = "Price should not be null.")
 	private double price;
 	
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
-	@Past(message = "manufacture date should be greater than today.")
+	@Past(message = "Manufacture date should be greater than today.")
 	private Date dateManufacture;
 	
 	private Date dateAdded;
 	
-	@NotNull(message = "category can not be empty")
+	@NotNull(message = "Category can not be empty.")
 	private String category;
 	
-	@Size(min = 10, message = "description should be at least 10")
+	@Size(min = 10, message = "Description should be at least 10 character long.")
 	private String description;
 	
 	private int productId;

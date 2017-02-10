@@ -126,8 +126,10 @@ public class UserController {
 		session.setAttribute("userName", user.getUsername());
 
 		session.setAttribute("userInfo", user);
+		
+		System.out.println("User Status"+user.getStatus());
 
-		if (user.getStatus().equals("ADMIN"))
+		if (user.getStatus().equals("Admin"))
 			return "redirect:/adminWelcome";
 		else
 			return "redirect:/welcome";
